@@ -65,7 +65,7 @@ function fetchNews() {
     }
   })
 }
-// fetchNews()
+fetchNews()
 
 
 
