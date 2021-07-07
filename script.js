@@ -1,4 +1,4 @@
-//accounting.js example
+accounting.js example
 var a = accounting.formatMoney(5318008);
 console.log(a) //$5,318,008.00
 
@@ -57,11 +57,24 @@ function fetchNews() {
   })
   .then(data => {
     console.log(data)
-    for(var i = 0; i < 5; i++) {
+    for(var i = 0; i < 3; i++) {
       console.log('headline --> ', data[i].headline)
       console.log('image --> ', data[i].image)
       console.log('url --> ', data[i].url)
       console.log('summary --> ', data[i].summary)
+
+    document.getElementsByClassName("headlineOne")[i].innerText = data[0].headline;
+    document.getElementsByClassName("headlineTwo")[i].innerText = data[1].headline;
+    document.getElementsByClassName("headlineThree")[i].innerText = data[2].headline;
+    document.getElementsByClassName("summaryOne")[i].innerText = data[0].summary;
+    document.getElementsByClassName("summaryTwo")[i].innerText = data[1].summary;
+    document.getElementsByClassName("summaryThree")[i].innerText = data[2].summary;
+    document.getElementsByClassName("urlOne")[i].innerText = data[0].url;
+    document.getElementsByClassName("urlTwo")[i].innerText = data[1].url;
+    document.getElementsByClassName("urlThree")[i].innerText = data[2].url;
+    document.getElementsByClassName("image")[i].innerText = data[i].image;
+
+
     }
   })
 }
