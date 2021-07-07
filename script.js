@@ -68,6 +68,71 @@ function fetchNews() {
 // fetchNews()
 
 
+//chart -
+function chart(symbol) {
+  var currentUnix =Math.round(new Date().getTime()/1000);
+  var dateInUnix10DayAgo = currentUnix - (86400 * 10)
+  // var aDatAgo = currentUnix - 86400;
+  console.log('currentUnix', new Date(currentUnix * 1000).toLocaleDateString("en-US"))
+  console.log('dateInUnix10DayAgo', new Date(dateInUnix10DayAgo * 1000).toLocaleDateString("en-US"))
+  var stockCandlesApi = `https://finnhub.io/api/v1/stock/candle?symbol=${symbol}&resolution=D&from=${dateInUnix10DayAgo}&to=${currentUnix}&token=${apiKey}`
+  fetch(stockCandlesApi)
+  .then(res => {
+    return res.json();
+  })
+  .then(data => {
+    // console.log(data)
+    // console.log('before', data.t)
+    let timeSlot = data.t
+
+    //convert unix time array to real time
+    // let realtime = timeSlot.map(time => {
+    //   return new Date(time).toLocaleTimeString("en-US")
+    // })
+
+
+    let realDate = timeSlot.map(time => {
+      // console.log('time', time)
+      return new Date(time * 1000).toLocaleDateString("en-US")
+    })
+    // console.log('realDate', realDate)
+
+    buildChart(data.o, realDate)
+  })
+}
+//symbol example to test - aapl, fb , googl, amzn
+chart('fb')
+
+
+//build chart function - input need to a array of number
+function buildChart(priceArray, dateArray) {
+  // need to grab the current price nd push it to priceArray
+  let labels = dateArray;
+  let data = {
+    labels: labels,
+    datasets: [{
+      label: 'History',
+      backgroundColor: 'rgb(255, 99, 132)',
+      borderColor: 'rgb(255, 99, 132)',
+      data: priceArray,
+    }]
+  };
+
+  const config = {
+    type: 'line',
+    data,
+    options: {}
+  };
+
+  var myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+  );
+}
+
+
+
+
 
 
 
