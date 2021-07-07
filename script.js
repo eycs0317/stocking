@@ -62,6 +62,17 @@ function fetchNews() {
       console.log('image --> ', data[i].image)
       console.log('url --> ', data[i].url)
       console.log('summary --> ', data[i].summary)
+
+      document.getElementsByClassName("headlineOne")[i].innerText = data[0].headline;
+      document.getElementsByClassName("headlineTwo")[i].innerText = data[1].headline;
+      document.getElementsByClassName("headlineThree")[i].innerText = data[2].headline;
+      document.getElementsByClassName("summaryOne")[i].innerText = data[0].summary;
+      document.getElementsByClassName("summaryTwo")[i].innerText = data[1].summary;
+      document.getElementsByClassName("summaryThree")[i].innerText = data[2].summary;
+      document.getElementsByClassName("urlOne")[i].innerText = data[0].url;
+      document.getElementsByClassName("urlTwo")[i].innerText = data[1].url;
+      document.getElementsByClassName("urlThree")[i].innerText = data[2].url;
+      document.getElementsByClassName("image")[i].innerText = data[i].image;
     }
   })
 }
