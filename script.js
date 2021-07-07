@@ -1,6 +1,6 @@
-//accounting.js example
-// var a = accounting.formatMoney(5318008);
-// console.log(a) //$5,318,008.00
+accounting.js example
+var a = accounting.formatMoney(5318008);
+console.log(a) //$5,318,008.00
 
 
 
@@ -58,7 +58,7 @@ function fetchNews() {
   .then(data => {
     console.log(data)
     for(var i = 0; i < 3; i++) {
-      console.log('headline --> ', data[i].headline) 
+      console.log('headline --> ', data[i].headline)
       console.log('image --> ', data[i].image)
       console.log('url --> ', data[i].url)
       console.log('summary --> ', data[i].summary)
