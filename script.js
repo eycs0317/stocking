@@ -71,7 +71,7 @@ function fetchNews() {
 //chart -
 function chart(symbol) {
   var currentUnix =Math.round(new Date().getTime()/1000);
-  var dateInUnix10DayAgo = currentUnix - (86400 * 10)
+  var dateInUnix10DayAgo = currentUnix - (86400 * 20)
   // var aDatAgo = currentUnix - 86400;
   console.log('currentUnix', new Date(currentUnix * 1000).toLocaleDateString("en-US"))
   console.log('dateInUnix10DayAgo', new Date(dateInUnix10DayAgo * 1000).toLocaleDateString("en-US"))
@@ -97,21 +97,21 @@ function chart(symbol) {
     })
     // console.log('realDate', realDate)
 
-    buildChart(data.o, realDate)
+    buildChart(symbol,data.o, realDate)
   })
 }
 //symbol example to test - aapl, fb , googl, amzn
-chart('fb')
+chart('googl')
 
 
 //build chart function - input need to a array of number
-function buildChart(priceArray, dateArray) {
+function buildChart(symbol,priceArray, dateArray) {
   // need to grab the current price nd push it to priceArray
   let labels = dateArray;
   let data = {
     labels: labels,
     datasets: [{
-      label: 'History',
+      label: symbol.toUpperCase(),
       backgroundColor: 'rgb(255, 99, 132)',
       borderColor: 'rgb(255, 99, 132)',
       data: priceArray,
