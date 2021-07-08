@@ -1,9 +1,8 @@
 
 
-
 .is-child {
     margin-bottom: 240px;
-    color: rgb(45, 45, 45);
+    color: #353535;
 }
 
 .heroimg {
@@ -69,6 +68,7 @@
 .box:hover {
     background-color: #330099;
     border-width: thick;
+    color: white;
 
 }
 
