@@ -112,7 +112,7 @@ fetchNews()
 //function will call the API and get all the history data.
 function chart(symbol) {
   var currentUnix =Math.round(new Date().getTime()/1000);
-  var dateInUnix10DayAgo = currentUnix - (86400 * 10)
+  var dateInUnix10DayAgo = currentUnix - (86400 * 20)
 
   var stockCandlesApi = `https://finnhub.io/api/v1/stock/candle?symbol=${symbol}&resolution=D&from=${dateInUnix10DayAgo}&to=${currentUnix}&token=${apiKey}`
   fetch(stockCandlesApi)
@@ -142,8 +142,8 @@ function buildChart(symbol,priceArray, dateArray) {
     labels: labels,
     datasets: [{
       label: symbol.toUpperCase(),
-      backgroundColor: 'rgb(255, 99, 132)',
-      borderColor: 'rgb(255, 99, 132)',
+      backgroundColor: '#ff00cc',
+      borderColor: '#ff00cc',
       data: priceArray,
     }]
   };
