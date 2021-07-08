@@ -57,30 +57,24 @@ function fetchNews() {
   })
   .then(data => {
     // console.log(data)
-    for(var i = 0; i < 3; i++) {
+
+    // News section
+      for(var i = 0; i < 4; i++) {
       let headline = data[i].headline;
       let imageUrl = data[i].image;
       let url = data[i].url;
-      let summart = data[i].summary
+      let summary = data[i].summary
 
-      // console.log('headline --> ', headline)
-      // console.log('image --> ', imageUrl)
-      // console.log('url --> ', url)
-      // console.log('summary --> ', summary)
+    var $headlineEl = $("<p>").addClass("title headline is-size-4").text(headline);
+    var $summaryEl = $("<p>").addClass("summary is-size-6").text(summary);
+    var $articleEl = $("<article>").addClass("tile is-child box");
+    var $cardEl = $("<div>").addClass("tile is-parent");
+    
 
+    $articleEl.append($headlineEl, $summaryEl);
+    $cardEl.append($articleEl);
+    $(".is-ancestor").append($cardEl);
 
-
-
-      document.getElementsByClassName("headlineOne")[i].innerText = data[0].headline;
-      document.getElementsByClassName("headlineTwo")[i].innerText = data[1].headline;
-      document.getElementsByClassName("headlineThree")[i].innerText = data[2].headline;
-      document.getElementsByClassName("summaryOne")[i].innerText = data[0].summary;
-      document.getElementsByClassName("summaryTwo")[i].innerText = data[1].summary;
-      document.getElementsByClassName("summaryThree")[i].innerText = data[2].summary;
-      document.getElementsByClassName("urlOne")[i].innerText = data[0].url;
-      document.getElementsByClassName("urlTwo")[i].innerText = data[1].url;
-      document.getElementsByClassName("urlThree")[i].innerText = data[2].url;
-      document.getElementsByClassName("image")[i].innerText = data[i].image;
     }
   })
 }
