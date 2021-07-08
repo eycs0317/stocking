@@ -26,10 +26,18 @@ function fetchCryto (symbol) {
 //symbol example to test - btc, eth, usdt ,bnb
 // fetchCryto('bnb')
 
+$('.searchBtn').click(function() {
+  let userInput = $('.searchCode').val()
+  console.log(userInput)
+  chart(userInput);
+  fetchStockPrice(userInput);
+})
+
 
 const apiKey = 'c3ibusiad3ib8lb82nbg'
 
 function fetchStockPrice (symbol) {
+  console.log(symbol)
   symbol = symbol.toUpperCase();
   var stockPriceApi = `https://finnhub.io/api/v1/quote?symbol=${symbol}&token=${apiKey}`
   fetch(stockPriceApi)
@@ -38,17 +46,30 @@ function fetchStockPrice (symbol) {
     return res.json()
   })
   .then(data => {
-    console.log('current price', accounting.formatMoney(data.c))
-    console.log('open price', accounting.formatMoney(data.o))
-    console.log('low price', accounting.formatMoney(data.l))
-    console.log('high price', accounting.formatMoney(data.h))
-    console.log('Previous close price', accounting.formatMoney(data.pc))
+    let currentPrice = accounting.formatMoney(data.c)
+    let openPrice = accounting.formatMoney(data.o)
+    let lowPrice = accounting.formatMoney(data.l)
+    let highPrice = accounting.formatMoney(data.h)
+    let prevPrice = accounting.formatMoney(data.pc)
+    displayCurrentStockInfo(currentPrice, openPrice, lowPrice, highPrice, prevPrice)
+    // console.log('current-price', accounting.formatMoney(data.c))
+    // console.log('open price', accounting.formatMoney(data.o))
+    // console.log('low price', accounting.formatMoney(data.l))
+    // console.log('high price', accounting.formatMoney(data.h))
+    // console.log('Previous close price', accounting.formatMoney(data.pc))
   })
-
 }
 //symbol example to test - aapl, fb , googl, amzn
 // fetchStockPrice('googl')
-
+function displayCurrentStockInfo(currentPrice, openPrice, lowPrice, highPrice, prevPrice){
+  // console.log('currentPrice',currentPrice)
+  // console.log('getelement', document.getElementsByClassName('current-price'))
+   document.getElementsByClassName('current-price')[0].innerText = currentPrice;
+   document.getElementsByClassName('open')[0].innerHTML = openPrice;
+   document.getElementsByClassName('low')[0].innerHTML = lowPrice;
+   document.getElementsByClassName('high')[0].innerHTML = highPrice;
+   document.getElementsByClassName('previous-close')[0].innerHTML = prevPrice;
+ }
 function fetchNews() {
   var bussinessNewsApi = `https://finnhub.io/api/v1/news?category=general&token=${apiKey}`
   fetch(bussinessNewsApi)
@@ -110,7 +131,6 @@ function chart(symbol) {
   })
 }
 //symbol example to test - aapl, fb , googl, amzn
-chart('fb')
 
 
 //build chart function - input 1. symbol 2. array of pricing, 3. array of date
@@ -140,6 +160,7 @@ function buildChart(symbol,priceArray, dateArray) {
     config
   );
 }
+
 
 
 

@@ -1,6 +1,4 @@
 
-
-
 .is-child {
     margin-bottom: 240px;
     color: rgb(45, 45, 45);
@@ -85,4 +83,21 @@
     margin-right: auto;
     margin-left: auto;
     width: 260px;
+}
+
+.stock-container {
+    display: flex;
+    flex-direction: row;
+    height: 380px;
+    border-radius: 10px;
+}
+
+.left-box {
+    padding: 50px;
+    width: 50%;
+}
+
+.right-box {
+    padding: 30px;
+    width: 50%;
 }
