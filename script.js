@@ -1,6 +1,6 @@
-accounting.js example
-var a = accounting.formatMoney(5318008);
-console.log(a) //$5,318,008.00
+// accounting.js example
+// var a = accounting.formatMoney(5318008);
+// console.log(a) //$5,318,008.00
 
 
 
@@ -56,14 +56,21 @@ function fetchNews() {
     return res.json()
   })
   .then(data => {
-    console.log(data)
+    // console.log(data)
     for(var i = 0; i < 3; i++) {
-      console.log('headline --> ', data[i].headline)
-      console.log('image --> ', data[i].image)
-      console.log('url --> ', data[i].url)
-      console.log('summary --> ', data[i].summary)
+      let headline = data[i].headline;
+      let imageUrl = data[i].image;
+      let url = data[i].url;
+      let summart = data[i].summary
 
-<<<<<<< HEAD
+      // console.log('headline --> ', headline)
+      // console.log('image --> ', imageUrl)
+      // console.log('url --> ', url)
+      // console.log('summary --> ', summary)
+
+
+
+
       document.getElementsByClassName("headlineOne")[i].innerText = data[0].headline;
       document.getElementsByClassName("headlineTwo")[i].innerText = data[1].headline;
       document.getElementsByClassName("headlineThree")[i].innerText = data[2].headline;
@@ -74,20 +81,6 @@ function fetchNews() {
       document.getElementsByClassName("urlTwo")[i].innerText = data[1].url;
       document.getElementsByClassName("urlThree")[i].innerText = data[2].url;
       document.getElementsByClassName("image")[i].innerText = data[i].image;
-=======
-    document.getElementsByClassName("headlineOne")[i].innerText = data[0].headline;
-    document.getElementsByClassName("headlineTwo")[i].innerText = data[1].headline;
-    document.getElementsByClassName("headlineThree")[i].innerText = data[2].headline;
-    document.getElementsByClassName("summaryOne")[i].innerText = data[0].summary;
-    document.getElementsByClassName("summaryTwo")[i].innerText = data[1].summary;
-    document.getElementsByClassName("summaryThree")[i].innerText = data[2].summary;
-    document.getElementsByClassName("urlOne")[i].innerText = data[0].url;
-    document.getElementsByClassName("urlTwo")[i].innerText = data[1].url;
-    document.getElementsByClassName("urlThree")[i].innerText = data[2].url;
-    document.getElementsByClassName("image")[i].innerText = data[i].image;
-
-
->>>>>>> framework
     }
   })
 }
@@ -97,10 +90,10 @@ fetchNews()
 //chart -
 function chart(symbol) {
   var currentUnix =Math.round(new Date().getTime()/1000);
-  var dateInUnix10DayAgo = currentUnix - (86400 * 20)
+  var dateInUnix10DayAgo = currentUnix - (86400 * 30)
   // var aDatAgo = currentUnix - 86400;
-  console.log('currentUnix', new Date(currentUnix * 1000).toLocaleDateString("en-US"))
-  console.log('dateInUnix10DayAgo', new Date(dateInUnix10DayAgo * 1000).toLocaleDateString("en-US"))
+  // console.log('currentUnix', new Date(currentUnix * 1000).toLocaleDateString("en-US"))
+  // console.log('dateInUnix10DayAgo', new Date(dateInUnix10DayAgo * 1000).toLocaleDateString("en-US"))
   var stockCandlesApi = `https://finnhub.io/api/v1/stock/candle?symbol=${symbol}&resolution=D&from=${dateInUnix10DayAgo}&to=${currentUnix}&token=${apiKey}`
   fetch(stockCandlesApi)
   .then(res => {
@@ -122,18 +115,19 @@ function chart(symbol) {
       return new Date(time * 1000).toLocaleDateString("en-US")
     })
     // console.log('realDate', realDate)
-
+    console.log(data.o)
     buildChart(symbol,data.o, realDate)
   })
 }
 //symbol example to test - aapl, fb , googl, amzn
-chart('googl')
+chart('fb')
 
 
 //build chart function - input need to a array of number
 function buildChart(symbol,priceArray, dateArray) {
   // need to grab the current price nd push it to priceArray
   let labels = dateArray;
+
   let data = {
     labels: labels,
     datasets: [{
