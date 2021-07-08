@@ -12,9 +12,25 @@
 
 </head>
 <body>
+
+
+    
+
     <div class="newscontainer has-background-black">
       <div class="notification is-primary has-background-black">
         <div class="columns has-background-black">
+
+          <div class="column has-background-black">
+            <p class="bd-notification is-info has-background-black">
+              <img src="library/heroblk.jpg" class="heroimg">
+
+              <div>
+                <img src="library/stocktowatch.png" class="stockImg">
+
+              </div>
+                <marquee width="100%" direction="left" height="100px" class="stockToWatch">
+                AMZN AAPL COST DIS FB MSFT TSLA
+
           <div class="column has-background-black ">
                 <img src="library/heroblk.jpg" class="heroimg">
                 <!-- </div> -->
@@ -39,30 +55,33 @@
                   <button class="stockToWatch history-btn">AMZN</button>
                   <button class="stockToWatch history-btn">AAPL</button>
                   <button class="stockToWatch history-btn">COST</button>
+
                 </marquee>
 
           </div>
 
         </div>
-
+        
+      <div class="stock-container">
+        <div class="left-box">
+          <div class="stock-heading"></div>
+          <div class="current-price"></div>
+          <div class="high"></div>
+          <div class="low"></div>
+          <div class="open"></div>
+          <div class="previous-close"></div>
+        </div>
+        <div class="right-box">
+          <canvas class="myChart" id="myChart"></canvas>
+        </div>
       </div>
-
     </div>
-
-
-      <!-- Output chart section -->
-      <div>
-      <canvas id="myChart"></canvas>
-      </div>
-
-
-
-
+</div>
 <!-- links -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="./library/accounting.js"></script>
-
 <script src="./script.js"></script>
 </body>
 </html>
