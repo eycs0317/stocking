@@ -2,7 +2,6 @@
 
 
 .is-child {
-    background-color: #eeeeee;
     margin-bottom: 240px;
     color: rgb(45, 45, 45);
 }
@@ -68,7 +67,22 @@
 }
 
 .box:hover {
-    background-color: #330066;
+    background-color: #330099;
     border-width: thick;
     color: rgb(255, 255, 255);
+}
+
+.stockToWatch {
+    font-family: 'Wallpoet', cursive;
+    color: #ff00cc;
+    font-size: 40px;
+}
+
+.stockImg {
+    display: flex;
+    align-items: center;    
+    justify-content: center;
+    margin-right: auto;
+    margin-left: auto;
+    width: 260px;
 }
