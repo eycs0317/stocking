@@ -97,12 +97,12 @@
     width: 260px;
 }
 
-.stock-container {
+/* .stock-container {
     display: flex;
     flex-direction: row;
     height: 380px;
     border-radius: 10px;
-}
+} */
 
 .left-box {
     padding: 50px;

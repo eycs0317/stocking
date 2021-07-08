@@ -22,7 +22,7 @@
                 <img src="library/heroblk.jpg" class="heroimg">
                 <!-- </div> -->
                 <!-- Article section -->
-                <div class="tile is-ancestor">
+                <div class="tile is-ancestor article-section">
                 </div>
 
                 <!-- Stock search symbol section -->
@@ -44,26 +44,37 @@
                   <button class="stockToWatch history-btn">COST</button>
 
                 </marquee>
-
           </div>
 
         </div>
 
-      <div class="stock-container container is-primary">
-        <div class="left-box is-one-thirds">
-          <div class="stock-heading"></div>
-          <div class="current-price"></div>
-          <div class="high"></div>
-          <div class="low"></div>
-          <div class="open"></div>
-          <div class="previous-close"></div>
+        <!-- Display the current stock search price and chart -->
+        <div class="tile is-ancestor">
+
+          <div class="tile is-parent">
+            <article class="tile is-child notification is-primary">
+              <div class="stock-heading">fdfdaf</div>
+              <div class="current-price">dfdsfsaf</div>
+              <div class="high">fdsfsaf</div>
+              <div class="low">fdsafsaf</div>
+              <div class="open">fdafsaf</div>
+              <div class="previous-close">fdsafsaf</div>
+            </article>
+          </div>
+
+          <div class="tile is-parent is-8">
+            <article class="tile is-child notification is-info">
+              <canvas class="myChart" id="myChart"></canvas>
+            </article>
+          </div>
+
         </div>
-        <div class="right-box ">
-          <canvas class="myChart" id="myChart"></canvas>
-        </div>
-      </div>
     </div>
 </div>
+
+
+
+
 <!-- links -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 

@@ -100,7 +100,7 @@ function fetchNews() {
 
     $articleEl.append($headlineEl, $summaryEl);
     $cardEl.append($articleEl);
-    $(".is-ancestor").append($cardEl);
+    $(".article-section").append($cardEl);
 
     }
   })
