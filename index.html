@@ -18,7 +18,7 @@
           <div class="column has-background-black ">
             <p class="bd-notification is-info has-background-black">
                 <img src="library/heroblk.jpg" class="heroimg">
-
+  </div>
 
 
 
@@ -30,19 +30,22 @@
                 <img src="library/ssymbol.png" width="400px" class="imgSearch">
                 <div class="searchArea">
                 <input class="searchCode" placeholder="Stock Symbol"> </input><br>
-
-
                 <!-- search button section -->
                 <button class="searchBtn">search</button>
                 </div>
-
-                <!-- Marquee section -->
+                
+         <!-- Marquee section -->
                 <div>
                 <!-- <img src="library/stocktowatch.png" class="stockImg"> -->
                 </div> 
-                <marquee width="80%" direction="left" height="100px" class="stockToWatch">
-                test1
+                <marquee width="100%" direction="left" height="100px"  class="stockToWatch" onMouseOver="this.stop()" onMouseOut="this.start()" >
+                <!-- AMZN AAPL COST DIS FB MSFT TSLA -->
+                <button class="stockToWatch history-btn">AMZN</button>
+                <button class="stockToWatch history-btn">AAPL</button>
+                <button class="stockToWatch history-btn">COST</button>
                 </marquee>
+        
+
 
 
               </div>
