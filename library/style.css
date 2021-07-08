@@ -14,7 +14,7 @@
     justify-content: center;
     align-content: center;
     background-color: rgb(14, 14, 14);
-    padding-bottom: 200px;
+    padding-bottom: 50px;
     padding-top: 10px;
 
 
@@ -67,13 +67,25 @@
 .box:hover {
     background-color: #330099;
     border-width: thick;
-    color: rgb(255, 255, 255);
+
 }
 
 .stockToWatch {
     font-family: 'Wallpoet', cursive;
     color: #ff00cc;
     font-size: 40px;
+    background-color: #000000;
+}
+
+.history-btn {
+    font-family: 'Wallpoet', cursive;
+    color: #ff00cc;
+    font-size: 40px;
+}
+
+.history-btn:hover {
+    color:aliceblue;
+    border-width: thick;
 }
 
 .stockImg {
