@@ -18,12 +18,12 @@
     background-color: rgb(14, 14, 14);
     padding-bottom: 200px;
     padding-top: 10px;
-    
+
 
 }
 
 .searchBtn {
-    background-color: #000000; 
+    background-color: #000000;
     border: none;
     color: white;
     padding: 0px 0px 10px 10px;
@@ -42,7 +42,7 @@
     color: #ff3399;
     margin-left: 20px;
 }
-  
+
 .searchBtn:hover {
     background-color: #ff00cc;
     font-style: oblique;
@@ -59,7 +59,7 @@
 
 .imgSearch {
     display: flex;
-    align-items: center;    
+    align-items: center;
     justify-content: center;
     margin-right: auto;
     margin-left: auto;
@@ -80,7 +80,7 @@
 
 .stockImg {
     display: flex;
-    align-items: center;    
+    align-items: center;
     justify-content: center;
     margin-right: auto;
     margin-left: auto;
