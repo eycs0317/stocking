@@ -61,13 +61,11 @@ function fetchNews() {
       let headline = data[i].headline;
       let imageUrl = data[i].image;
       let url = data[i].url;
-      let summart = data[i].summary
+      let summary = data[i].summary
 
-      // console.log('headline --> ', headline)
-      // console.log('image --> ', imageUrl)
-      // console.log('url --> ', url)
-      // console.log('summary --> ', summary)
-
+      var $headlineEl = $('<p>').addClass('title headlineOne is-size-4').text(headline)
+      var $summaryEl = $('<p>').addClass('summaryOne is-size-6').text(summary)
+      $('article').append($headlineEl, $summaryEl)
 
 
 
@@ -92,9 +90,7 @@ fetchNews()
 function chart(symbol) {
   var currentUnix =Math.round(new Date().getTime()/1000);
   var dateInUnix10DayAgo = currentUnix - (86400 * 10)
-  // var aDatAgo = currentUnix - 86400;
-  // console.log('currentUnix', new Date(currentUnix * 1000).toLocaleDateString("en-US"))
-  // console.log('dateInUnix10DayAgo', new Date(dateInUnix10DayAgo * 1000).toLocaleDateString("en-US"))
+
   var stockCandlesApi = `https://finnhub.io/api/v1/stock/candle?symbol=${symbol}&resolution=D&from=${dateInUnix10DayAgo}&to=${currentUnix}&token=${apiKey}`
   fetch(stockCandlesApi)
   .then(res => {
@@ -109,6 +105,7 @@ function chart(symbol) {
     buildChart(symbol,data.o, realDate)
   })
 }
+
 //symbol example to test - aapl, fb , googl, amzn
 chart('fb')
 
@@ -142,4 +139,25 @@ function buildChart(symbol,priceArray, dateArray) {
 }
 
 
+//marquee function to stop and start when hover over
+// $('marquee').mouseover(function() {
+//   $(this).attr('scrollamount',0);
+// }),mouseout(function() {
+//   $(this).attr('scrollamount', 6)
+// })
+
+//build marquee button
+function buildMarqueeButton (sym) {
+  let historyBtnEl = $('<button>').addClass('stockToWatch history-btn').text(sym)
+
+  historyBtnEl.attr('id', sym)
+  $('marquee').append(historyBtnEl)
+
+}
+buildMarqueeButton('lalalal')
+
+//handle click for the history search button
+$('.history-btn').click(function() {
+  console.log($(this).attr('id'))
+})
 
