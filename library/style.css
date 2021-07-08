@@ -1,16 +1,7 @@
-.black {
-    background-color: black;
-}
 
-.headlineOne {
-    color: #333366;
-}
 
-.summaryOne{
-}
 
 .is-child {
-    background-color: #eeeeee;
     margin-bottom: 240px;
     color: rgb(45, 45, 45);
 }
@@ -20,3 +11,78 @@
     background-color: transparent;
 }
 
+.searchArea{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background-color: rgb(14, 14, 14);
+    padding-bottom: 200px;
+    padding-top: 10px;
+
+
+}
+
+.searchBtn {
+    background-color: #000000;
+    border: none;
+    color: white;
+    padding: 0px 0px 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: medium;
+    font-weight: bold;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.searchBtn {
+    background-color: rgb(2, 2, 2);
+    color: #ff3399;
+    margin-left: 20px;
+}
+
+.searchBtn:hover {
+    background-color: #ff00cc;
+    font-style: oblique;
+    padding-right: 50px;
+    color: white;
+}
+
+.searchCode {
+    background-color: black;
+    color: #ffffff;
+    border-style: dotted;
+    border: fuchsia;
+}
+
+.imgSearch {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: auto;
+    margin-left: auto;
+    padding-top: 50px;
+}
+
+.box:hover {
+    background-color: #330099;
+    border-width: thick;
+    color: rgb(255, 255, 255);
+}
+
+.stockToWatch {
+    font-family: 'Wallpoet', cursive;
+    color: #ff00cc;
+    font-size: 40px;
+}
+
+.stockImg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: auto;
+    margin-left: auto;
+    width: 260px;
+}
