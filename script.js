@@ -27,9 +27,9 @@ function fetchCryto (symbol) {
 // fetchCryto('bnb')
 
 $('.searchBtn').click(function() {
-  if(window.myChart instanceof Chart){
-    window.myChart.destroy();
-  }
+  // if(window.myChart instanceof Chart){
+  //   window.myChart.destroy();
+  // }
   let userInput = $('.searchCode').val()
   $('.searchCode').val('')
 
@@ -56,6 +56,9 @@ function fetchStockPrice (symbol) {
       return;
       // need to show user invalid input
     } else {
+      if(window.myChart instanceof Chart){
+        window.myChart.destroy();
+      }
       chart(symbol);
       var stockArray = JSON.parse(localStorage.getItem("stockSymbol"));
       if (stockArray === null) {
@@ -223,9 +226,10 @@ function buildMarqueeButton (sym) {
 //display all history button when first load up
 function initHistoryButton () {
   var localStorageData = JSON.parse(localStorage.getItem("stockSymbol"));
-  localStorageData.forEach(symbol => {
-    buildMarqueeButton(symbol)
-  })
-
+  if(localStorageData !== null) {
+    localStorageData.forEach(symbol => {
+      buildMarqueeButton(symbol)
+    })
+  }
 }
 initHistoryButton()
