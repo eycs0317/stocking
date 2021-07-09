@@ -101,7 +101,7 @@ function fetchNews() {
     return res.json()
   })
   .then(data => {
-    console.log(data)
+    // console.log(data)
     // News section
     for(var i = 0; i < 4; i++) {
     let headline = data[i].headline;
@@ -207,10 +207,12 @@ function buildMarqueeButton (sym) {
 //display all history button when first load up
 function initHistoryButton () {
   var localStorageData = JSON.parse(localStorage.getItem("stockSymbol"));
-  localStorageData.forEach(symbol => {
-    buildMarqueeButton(symbol)
-  })
-
+  console.log('localStorageData',!localStorageData)
+  if(!!localStorageData) {
+    localStorageData.forEach(symbol => {
+      buildMarqueeButton(symbol)
+    })
+  }
 }
 initHistoryButton()
 
