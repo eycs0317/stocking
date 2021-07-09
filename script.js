@@ -56,7 +56,7 @@ function fetchStockPrice (symbol) {
       return;
       // need to show user invalid input
     } else {
-      chart(userInput);
+      chart(symbol);
       var stockArray = JSON.parse(localStorage.getItem("stockSymbol"));
       if (stockArray === null) {
         stockArray = [];
