@@ -109,16 +109,6 @@
     border-radius: 10px;
 }
 
-/* .left-box {
-    padding: 50px;
-    width: 50%;
-}
-
-.right-box 
-{
-    padding: 30px;
-    width: 50%;
-} */
 
 .current-price,
 .open,
@@ -130,13 +120,9 @@ padding: 10px;
 font-weight: bold;
 }
 
-.current-price,
-.open,
-.high,
-.previous-close,
-.low 
+.stock-heading
 {
-padding: 10px;
+padding: 14px;
 font-weight: bold;
 }
 
