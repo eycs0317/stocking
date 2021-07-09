@@ -1,7 +1,14 @@
+.columns,
+.column,
+.newscontainer,
+.notification
+{
+ background-color: #000000 !important;
+}
 
 .is-child {
     margin-bottom: 240px;
-    color: rgb(45, 45, 45);
+    color: #353535;
 }
 
 .heroimg {
@@ -13,11 +20,8 @@
     display: flex;
     justify-content: center;
     align-content: center;
-    background-color: rgb(14, 14, 14);
     padding-bottom: 50px;
     padding-top: 10px;
-
-
 }
 
 .searchBtn {
@@ -67,6 +71,7 @@
 .box:hover {
     background-color: #330099;
     border-width: thick;
+    color: white;
 
 }
 
@@ -97,12 +102,12 @@
     width: 260px;
 }
 
-/* .stock-container {
+.stock-container {
     display: flex;
     flex-direction: row;
     height: 380px;
     border-radius: 10px;
-} */
+}
 
 .left-box {
     padding: 50px;
@@ -112,4 +117,14 @@
 .right-box {
     padding: 30px;
     width: 50%;
+}
+
+.current-price,
+.open,
+.high,
+.previous-close,
+.low
+{
+padding: 10px;
+font-weight: bold;
 }

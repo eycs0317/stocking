@@ -70,17 +70,6 @@ function fetchStockPrice (symbol) {
         // buildMarqueeButton(symbol)
       }
 
-      // else {
-      //   if(!stockArray.includes(symbol)) {
-      //     stockArray.push(symbol)
-      //     localStorage.setItem('stockSymbol', JSON.stringify(stockArray))
-      //   }
-
-      // }
-
-      // 2. if it come by with data
-      // localStorage.getItem()
-      // localStorage.setItem()
       let currentPrice = accounting.formatMoney(data.c)
       let openPrice = accounting.formatMoney(data.o)
       let lowPrice = accounting.formatMoney(data.l)
@@ -113,19 +102,12 @@ function fetchNews() {
   })
   .then(data => {
     console.log(data)
-
     // News section
-      for(var i = 0; i < 4; i++) {
-      let headline = data[i].headline;
-      let imageUrl = data[i].image;
-      let url = data[i].url;
-      let summary = data[i].summary
-
-
-      // var $headlineEl = $('<p>').addClass('title headlineOne is-size-4').text(headline)
-      // var $summaryEl = $('<p>').addClass('summaryOne is-size-6').text(summary)
-      // $('article').append($headlineEl, $summaryEl)
-
+    for(var i = 0; i < 4; i++) {
+    let headline = data[i].headline;
+    let imageUrl = data[i].image;
+    let url = data[i].url;
+    let summary = data[i].summary
 
     var $headlineEl = $("<p>").addClass("title headline is-size-4").text(headline);
     var $summaryEl = $("<p>").addClass("summary is-size-6").text(summary);
