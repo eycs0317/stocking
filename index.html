@@ -22,15 +22,15 @@
                 <img src="library/heroblk.jpg" class="heroimg">
                 <!-- </div> -->
                 <!-- Article section -->
-                <div class="tile is-ancestor">
+                <div class="tile is-ancestor article-section">
                 </div>
 
                 <!-- Stock search symbol section -->
                 <img src="library/ssymbol.png" width="400px" class="imgSearch">
                 <div class="searchArea">
-                  <input class="searchCode" placeholder="Stock Symbol"> </input><br>
+                  <input class="searchCode px-3" placeholder="Stock Symbol"> </input><br>
                   <!-- search button section -->
-                  <button class="searchBtn">search</button>
+                  <button class="searchBtn px-5 py-2">search</button>
                 </div>
 
                 <!-- Marquee section -->
@@ -39,31 +39,43 @@
                 <!-- </div>  -->
                 <marquee width="100%" direction="left" height="100px"  class="stockToWatch" onMouseOver="this.stop()" onMouseOut="this.start()" >
                 <!-- AMZN AAPL COST DIS FB MSFT TSLA -->
-                  <button class="stockToWatch history-btn">AMZN</button>
+                  <!-- <button class="stockToWatch history-btn">AMZN</button>
                   <button class="stockToWatch history-btn">AAPL</button>
-                  <button class="stockToWatch history-btn">COST</button>
+                  <button class="stockToWatch history-btn">COST</button> -->
 
                 </marquee>
-
           </div>
 
         </div>
 
-      <div class="stock-container container is-primary">
-        <div class="left-box is-one-thirds">
-          <div class="stock-heading"></div>
-          <div class="current-price"></div>
-          <div class="high"></div>
-          <div class="low"></div>
-          <div class="open"></div>
-          <div class="previous-close"></div>
+        <!-- Display the current stock search price and chart -->
+        <div class="tile is-ancestor">
+
+          <div class="tile is-parent">
+            <article class="tile is-child notification is-primary">
+              <div class="stock-heading title"></div>
+              <div class="current-price subtitle"></div>
+              <div class="high"></div>
+              <div class="low"></div>
+              <div class="open"></div>
+              <div class="previous-close"></div>
+            </article>
+          </div>
+
+          <div class="tile is-parent is-8">
+            <article class="tile is-child notification is-info chart-holder">
+              <canvas class="myChart" id="myChart"></canvas>
+            </article>
+          </div>
+
         </div>
-        <div class="right-box ">
-          <canvas class="myChart" id="myChart"></canvas>
-        </div>
-      </div>
+
     </div>
 </div>
+
+
+
+
 <!-- links -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 

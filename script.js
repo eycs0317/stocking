@@ -27,49 +27,73 @@ function fetchCryto (symbol) {
 // fetchCryto('bnb')
 
 $('.searchBtn').click(function() {
+  if(window.myChart instanceof Chart){
+    window.myChart.destroy();
+  }
   let userInput = $('.searchCode').val()
-  console.log(userInput)
+  $('.searchCode').val('')
+
   chart(userInput);
   fetchStockPrice(userInput);
+  // buildMarqueeButton(userInput)
 })
 
 
 const apiKey = 'c3ibusiad3ib8lb82nbg'
 
 function fetchStockPrice (symbol) {
-  console.log(symbol)
+  // console.log(symbol)
   symbol = symbol.toUpperCase();
   var stockPriceApi = `https://finnhub.io/api/v1/quote?symbol=${symbol}&token=${apiKey}`
   fetch(stockPriceApi)
   .then(res => {
-    console.log('res', res)
+
     return res.json()
   })
   .then(data => {
-    let currentPrice = accounting.formatMoney(data.c)
-    let openPrice = accounting.formatMoney(data.o)
-    let lowPrice = accounting.formatMoney(data.l)
-    let highPrice = accounting.formatMoney(data.h)
-    let prevPrice = accounting.formatMoney(data.pc)
-    displayCurrentStockInfo(currentPrice, openPrice, lowPrice, highPrice, prevPrice)
-    // console.log('current-price', accounting.formatMoney(data.c))
-    // console.log('open price', accounting.formatMoney(data.o))
-    // console.log('low price', accounting.formatMoney(data.l))
-    // console.log('high price', accounting.formatMoney(data.h))
-    // console.log('Previous close price', accounting.formatMoney(data.pc))
-  })
+    if(data.c === 0 && data.h === 0) {
+      console.log('invalid input')
+      return;
+      // need to show user invalid input
+    } else {
+      var stockArray = JSON.parse(localStorage.getItem("stockSymbol"));
+      if (stockArray === null) {
+        stockArray = [];
+        stockArray.push(symbol);
+        localStorage.setItem('stockSymbol', JSON.stringify(stockArray))
+        buildMarqueeButton(symbol)
+      } else if (!stockArray.includes(symbol)) {
+          stockArray.push(symbol)
+          localStorage.setItem('stockSymbol', JSON.stringify(stockArray))
+          buildMarqueeButton(symbol)
+      } else {
+        // buildMarqueeButton(symbol)
+      }
+
+      let currentPrice = accounting.formatMoney(data.c)
+      let openPrice = accounting.formatMoney(data.o)
+      let lowPrice = accounting.formatMoney(data.l)
+      let highPrice = accounting.formatMoney(data.h)
+      let prevPrice = accounting.formatMoney(data.pc)
+      displayCurrentStockInfo(symbol,currentPrice, openPrice, lowPrice, highPrice, prevPrice)
+    }
+    })
+
 }
 //symbol example to test - aapl, fb , googl, amzn
 // fetchStockPrice('googl')
-function displayCurrentStockInfo(currentPrice, openPrice, lowPrice, highPrice, prevPrice){
+function displayCurrentStockInfo(symbol, currentPrice, openPrice, lowPrice, highPrice, prevPrice){
   // console.log('currentPrice',currentPrice)
   // console.log('getelement', document.getElementsByClassName('current-price'))
+  document.getElementsByClassName('stock-heading')[0].innerText = symbol;
    document.getElementsByClassName('current-price')[0].innerText = currentPrice;
    document.getElementsByClassName('open')[0].innerHTML = openPrice;
    document.getElementsByClassName('low')[0].innerHTML = lowPrice;
    document.getElementsByClassName('high')[0].innerHTML = highPrice;
    document.getElementsByClassName('previous-close')[0].innerHTML = prevPrice;
  }
+
+ //fetch news
 function fetchNews() {
   var bussinessNewsApi = `https://finnhub.io/api/v1/news?category=general&token=${apiKey}`
   fetch(bussinessNewsApi)
@@ -78,19 +102,12 @@ function fetchNews() {
   })
   .then(data => {
     // console.log(data)
-
     // News section
-      for(var i = 0; i < 4; i++) {
-      let headline = data[i].headline;
-      let imageUrl = data[i].image;
-      let url = data[i].url;
-      let summary = data[i].summary
-
-
-      // var $headlineEl = $('<p>').addClass('title headlineOne is-size-4').text(headline)
-      // var $summaryEl = $('<p>').addClass('summaryOne is-size-6').text(summary)
-      // $('article').append($headlineEl, $summaryEl)
-
+    for(var i = 0; i < 4; i++) {
+    let headline = data[i].headline;
+    let imageUrl = data[i].image;
+    let url = data[i].url;
+    let summary = data[i].summary
 
     var $headlineEl = $("<p>").addClass("title headline is-size-4").text(headline);
     var $summaryEl = $("<p>").addClass("summary is-size-6").text(summary);
@@ -100,7 +117,7 @@ function fetchNews() {
 
     $articleEl.append($headlineEl, $summaryEl);
     $cardEl.append($articleEl);
-    $(".is-ancestor").append($cardEl);
+    $(".article-section").append($cardEl);
 
     }
   })
@@ -154,33 +171,50 @@ function buildChart(symbol,priceArray, dateArray) {
     options: {}
   };
 
-  var myChart = new Chart(
+  window.myChart = new Chart(
     document.getElementById('myChart'),
     config
   );
 }
 
 
+
+
 //marquee function to stop and start when hover over
-// $('marquee').mouseover(function() {
-//   $(this).attr('scrollamount',0);
-// }),mouseout(function() {
-//   $(this).attr('scrollamount', 6)
-// })
+
 
 //build marquee button
 function buildMarqueeButton (sym) {
+  sym = sym.toUpperCase()
   let historyBtnEl = $('<button>').addClass('stockToWatch history-btn').text(sym)
 
   historyBtnEl.attr('id', sym)
+  historyBtnEl.click(function() {
+    console.log('click')
+    console.log($(this).attr('id'))
+    if(window.myChart instanceof Chart){
+      window.myChart.destroy();
+    }
+    // let userInput = $('.searchCode').val()
+    // $('.searchCode').val('')
+    // console.log('userInput', userInput)
+    chart(sym);
+    fetchStockPrice(sym);
+  })
   $('marquee').append(historyBtnEl)
-
 }
-buildMarqueeButton('lalalal')
 
-//handle click for the history search button
-$('.history-btn').click(function() {
-  console.log($(this).attr('id'))
-})
+//display all history button when first load up
+function initHistoryButton () {
+  var localStorageData = JSON.parse(localStorage.getItem("stockSymbol"));
+  console.log('localStorageData',!localStorageData)
+  if(!!localStorageData) {
+    localStorageData.forEach(symbol => {
+      buildMarqueeButton(symbol)
+    })
+  }
+}
+initHistoryButton()
+
 
 
