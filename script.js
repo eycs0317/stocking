@@ -27,9 +27,9 @@ function fetchCryto (symbol) {
 // fetchCryto('bnb')
 
 $('.searchBtn').click(function() {
-  // if(window.myChart instanceof Chart){
-  //   window.myChart.destroy();
-  // }
+  if(window.myChart instanceof Chart){
+    window.myChart.destroy();
+  }
   let userInput = $('.searchCode').val()
   $('.searchCode').val('')
 
@@ -53,6 +53,7 @@ function fetchStockPrice (symbol) {
   .then(data => {
     if(data.c === 0 && data.h === 0) {
       console.log('invalid input')
+      document.getElementsByClassName('invalid-msg')[0].innerText = `ERROR: Invalid Stock Code!`
       return;
       // need to show user invalid input
     } else {
@@ -106,7 +107,7 @@ function fetchNews() {
     return res.json()
   })
   .then(data => {
-    console.log(data)
+    // console.log(data)
     // News section
     for(var i = 0; i < 4; i++) {
     let headline = data[i].headline;
@@ -209,8 +210,8 @@ function buildMarqueeButton (sym) {
 
   historyBtnEl.attr('id', sym)
   historyBtnEl.click(function() {
-    console.log('click')
-    console.log($(this).attr('id'))
+    // console.log('click')
+    // console.log($(this).attr('id'))
     if(window.myChart instanceof Chart){
       window.myChart.destroy();
     }
