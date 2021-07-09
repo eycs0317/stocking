@@ -53,7 +53,9 @@ function fetchStockPrice (symbol) {
   .then(data => {
     if(data.c === 0 && data.h === 0) {
       console.log('invalid input')
-      document.getElementsByClassName('invalid-msg')[0].innerText = `ERROR: Invalid Stock Code!`
+      var errorEl = document.getElementsByClassName('invalid-msg')[0]
+      errorEl.innerText = `ERROR: Invalid Stock Code!`
+      setTimeout(function(){ errorEl.innerText = ''; }, 5000);
       return;
       // need to show user invalid input
     } else {
