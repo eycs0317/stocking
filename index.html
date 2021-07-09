@@ -12,66 +12,49 @@
 
 </head>
 <body>
-
-
-    <div class="newscontainer has-background-black">
-      <div class="notification is-primary has-background-black">
-        <div class="columns has-background-black">
-
-          <div class="column has-background-black ">
-                <img src="assets/heroblk.jpg" class="heroimg">
-
-                <!-- Article section -->
-                <div class="tile is-ancestor article-section">
-                </div>
-
-                <!-- Stock search symbol section -->
-                <img src="assets/ssymbol.png" width="400px" class="imgSearch">
-                <div class="searchArea">
-                  <input class="searchCode px-3" placeholder="Stock Symbol"> </input><br>
-                  <!-- search button section -->
-                  <button class="searchBtn px-5 py-2">search</button>
-                </div>
-
-                <!-- Marquee section -->
-                <marquee width="100%" direction="left" height="100px"  class="stockToWatch" onMouseOver="this.stop()" onMouseOut="this.start()" >
-                </marquee>
+  <div class="newscontainer has-background-black">
+    <div class="notification is-primary has-background-black">
+      <div class="columns has-background-black">
+        <div class="column has-background-black ">
+          <img src="assets/heroblk.jpg" class="heroimg">
+            <!-- Article section -->
+            <div class="tile is-ancestor article-section"></div>
+            <!-- Stock search symbol section -->
+            <img src="assets/ssymbol.png" width="400px" class="imgSearch">
+            <div class="searchArea">
+              <input class="searchCode px-3" placeholder="Stock Symbol"> </input><br>
+                <!-- search button section -->
+              <button class="searchBtn px-5 py-2">search</button>
+              <p class="invalid-msg"></p>
+            </div>
+              <!-- Marquee section -->
+            <marquee width="100%" direction="left" height="100px"  class="stockToWatch" onMouseOver="this.stop()" onMouseOut="this.start()" ></marquee>
           </div>
-
         </div>
-
         <!-- Display the current stock search price and chart -->
         <div class="tile is-ancestor">
-
-          <div class="tile is-parent">
-            <article class="tile is-child notification is-primary">
-              <div class="stock-heading title"></div>
-              <div class="current-price subtitle"></div>
-              <div class="high"></div>
-              <div class="low"></div>
-              <div class="open"></div>
-              <div class="previous-close"></div>
-            </article>
-          </div>
-
+            <div class="tile is-parent bg-light">
+              <article class="tile is-child notification is-primary">
+                <div class="stock-heading title"></div>
+                <div class="current-price subtitle"></div>
+                <div class="high"></div>
+                <div class="low"></div>
+                <div class="open"></div>
+                <div class="previous-close"></div>
+              </article>
+            </div>
           <div class="tile is-parent is-8">
             <article class="tile is-child notification is-info chart-holder">
               <canvas class="myChart" id="myChart"></canvas>
             </article>
           </div>
-
         </div>
-
-    </div>
-</div>
-
-
-
-<!-- links -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="./library/accounting.js"></script>
-<script src="./script.js"></script>
+      </div>
+   </div>
+    <!-- links -->
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./library/accounting.js"></script>
+    <script src="./script.js"></script>
 </body>
 </html>
