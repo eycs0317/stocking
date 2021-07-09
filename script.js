@@ -35,7 +35,7 @@ $('.searchBtn').click(function() {
 
   chart(userInput);
   fetchStockPrice(userInput);
-  buildMarqueeButton(userInput)
+  // buildMarqueeButton(userInput)
 })
 
 
@@ -51,11 +51,9 @@ function fetchStockPrice (symbol) {
     return res.json()
   })
   .then(data => {
-    // console.log('data', data)
-    // console.log('data.c', typeof data.c)
-    // console.log('data.c true/false', data.c === 0)
     if(data.c === 0 && data.h === 0) {
       console.log('invalid input')
+      return;
       // need to show user invalid input
     } else {
       var stockArray = JSON.parse(localStorage.getItem("stockSymbol"));
@@ -63,13 +61,22 @@ function fetchStockPrice (symbol) {
         stockArray = [];
         stockArray.push(symbol);
         localStorage.setItem('stockSymbol', JSON.stringify(stockArray))
-      } else {
-        if(!stockArray.includes(symbol)) {
+        buildMarqueeButton(symbol)
+      } else if (!stockArray.includes(symbol)) {
           stockArray.push(symbol)
           localStorage.setItem('stockSymbol', JSON.stringify(stockArray))
-        }
-
+          buildMarqueeButton(symbol)
+      } else {
+        // buildMarqueeButton(symbol)
       }
+
+      // else {
+      //   if(!stockArray.includes(symbol)) {
+      //     stockArray.push(symbol)
+      //     localStorage.setItem('stockSymbol', JSON.stringify(stockArray))
+      //   }
+
+      // }
 
       // 2. if it come by with data
       // localStorage.getItem()
@@ -196,6 +203,7 @@ function buildChart(symbol,priceArray, dateArray) {
 
 //build marquee button
 function buildMarqueeButton (sym) {
+  sym = sym.toUpperCase()
   let historyBtnEl = $('<button>').addClass('stockToWatch history-btn').text(sym)
 
   historyBtnEl.attr('id', sym)
@@ -205,11 +213,11 @@ function buildMarqueeButton (sym) {
     if(window.myChart instanceof Chart){
       window.myChart.destroy();
     }
-    let userInput = $('.searchCode').val()
-    $('.searchCode').val('')
-    console.log('userInput', userInput)
-    chart(userInput);
-    fetchStockPrice(userInput);
+    // let userInput = $('.searchCode').val()
+    // $('.searchCode').val('')
+    // console.log('userInput', userInput)
+    chart(sym);
+    fetchStockPrice(sym);
   })
   $('marquee').append(historyBtnEl)
 }
