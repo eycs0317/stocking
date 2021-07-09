@@ -83,25 +83,16 @@ function fetchStockPrice (symbol) {
 
 //symbol example to test - aapl, fb , googl, amzn
 // fetchStockPrice('googl')
-function displayCurrentStockInfo(currentPrice, openPrice, lowPrice, highPrice, prevPrice){
-  // console.log('currentPrice',currentPrice)
-  // console.log('getelement', document.getElementsByClassName('current-price'))
-   document.getElementsByClassName('current-price')[0].innerText = `Current price: ${currentPrice}`;
-   document.getElementsByClassName('open')[0].innerHTML = `Open price: ${openPrice}`;
-   document.getElementsByClassName('low')[0].innerHTML = `Low price: ${lowPrice}`;
-   document.getElementsByClassName('high')[0].innerHTML = `High price: ${highPrice}`;
-   document.getElementsByClassName('previous-close')[0].innerHTML = `Previous price: ${prevPrice}`;
+function displayCurrentStockInfo(symbol, currentPrice, openPrice, lowPrice, highPrice, prevPrice){
 
- }
-//from eddie
-//  document.getElementsByClassName('stock-heading')[0].innerText = symbol;
-//  document.getElementsByClassName('current-price')[0].innerText = currentPrice;
-//  document.getElementsByClassName('open')[0].innerHTML = openPrice;
-//  document.getElementsByClassName('low')[0].innerHTML = lowPrice;
-//  document.getElementsByClassName('high')[0].innerHTML = highPrice;
-//  document.getElementsByClassName('previous-close')[0].innerHTML = prevPrice;
+ document.getElementsByClassName('stock-heading')[0].innerText = `${symbol}`;
+ document.getElementsByClassName('current-price')[0].innerText = `Current price: ${currentPrice}`;
+ document.getElementsByClassName('open')[0].innerHTML = `Open price: ${openPrice}`;
+ document.getElementsByClassName('low')[0].innerHTML = `Low price: ${lowPrice}`;
+ document.getElementsByClassName('high')[0].innerHTML = `High price: ${highPrice}`;
+ document.getElementsByClassName('previous-close')[0].innerHTML = `Previous price: ${prevPrice}`;
 
-
+}
 
  //fetch news
 function fetchNews() {
