@@ -116,10 +116,11 @@ function fetchNews() {
     var $articleEl = $("<article>").addClass("tile is-child box");
     var $cardEl = $("<div>").addClass("tile is-parent cardItem").attr("url", url);
     $cardEl.click(function (){
-      // console.log("click");
-      // console.log($(this));
-    $(this).attr("url");
-    console.log($(this));
+    $(this).attr("url")
+
+    var cardLink =  $(this).attr("url")
+    window.open(cardLink);
+
     })
 
     $articleEl.append($headlineEl, $summaryEl);
