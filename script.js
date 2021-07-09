@@ -27,10 +27,16 @@ function fetchCryto (symbol) {
 // fetchCryto('bnb')
 
 $('.searchBtn').click(function() {
+
+  if(window.myChart instanceof Chart){
+    window.myChart.destroy();
+  }
+
   let userInput = $('.searchCode').val()
-  console.log(userInput)
+  console.log('userInput', userInput)
   chart(userInput);
   fetchStockPrice(userInput);
+  buildMarqueeButton(userInput)
 })
 
 
@@ -154,33 +160,31 @@ function buildChart(symbol,priceArray, dateArray) {
     options: {}
   };
 
-  var myChart = new Chart(
+  window.myChart = new Chart(
     document.getElementById('myChart'),
     config
   );
 }
 
 
+
+
 //marquee function to stop and start when hover over
-// $('marquee').mouseover(function() {
-//   $(this).attr('scrollamount',0);
-// }),mouseout(function() {
-//   $(this).attr('scrollamount', 6)
-// })
+
 
 //build marquee button
 function buildMarqueeButton (sym) {
   let historyBtnEl = $('<button>').addClass('stockToWatch history-btn').text(sym)
 
   historyBtnEl.attr('id', sym)
+  historyBtnEl.click(function() {
+    console.log('click')
+    console.log($(this).attr('id'))
+  })
   $('marquee').append(historyBtnEl)
 
 }
 buildMarqueeButton('lalalal')
 
-//handle click for the history search button
-$('.history-btn').click(function() {
-  console.log($(this).attr('id'))
-})
 
 
