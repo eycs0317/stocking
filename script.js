@@ -80,18 +80,28 @@ function fetchStockPrice (symbol) {
     })
 
 }
+
 //symbol example to test - aapl, fb , googl, amzn
 // fetchStockPrice('googl')
-function displayCurrentStockInfo(symbol, currentPrice, openPrice, lowPrice, highPrice, prevPrice){
+function displayCurrentStockInfo(currentPrice, openPrice, lowPrice, highPrice, prevPrice){
   // console.log('currentPrice',currentPrice)
   // console.log('getelement', document.getElementsByClassName('current-price'))
-  document.getElementsByClassName('stock-heading')[0].innerText = symbol;
-   document.getElementsByClassName('current-price')[0].innerText = currentPrice;
-   document.getElementsByClassName('open')[0].innerHTML = openPrice;
-   document.getElementsByClassName('low')[0].innerHTML = lowPrice;
-   document.getElementsByClassName('high')[0].innerHTML = highPrice;
-   document.getElementsByClassName('previous-close')[0].innerHTML = prevPrice;
+   document.getElementsByClassName('current-price')[0].innerText = `Current price: ${currentPrice}`;
+   document.getElementsByClassName('open')[0].innerHTML = `Open price: ${openPrice}`;
+   document.getElementsByClassName('low')[0].innerHTML = `Low price: ${lowPrice}`;
+   document.getElementsByClassName('high')[0].innerHTML = `High price: ${highPrice}`;
+   document.getElementsByClassName('previous-close')[0].innerHTML = `Previous price: ${prevPrice}`;
+
  }
+//from eddie
+//  document.getElementsByClassName('stock-heading')[0].innerText = symbol;
+//  document.getElementsByClassName('current-price')[0].innerText = currentPrice;
+//  document.getElementsByClassName('open')[0].innerHTML = openPrice;
+//  document.getElementsByClassName('low')[0].innerHTML = lowPrice;
+//  document.getElementsByClassName('high')[0].innerHTML = highPrice;
+//  document.getElementsByClassName('previous-close')[0].innerHTML = prevPrice;
+
+
 
  //fetch news
 function fetchNews() {
@@ -101,7 +111,7 @@ function fetchNews() {
     return res.json()
   })
   .then(data => {
-    // console.log(data)
+    console.log(data)
     // News section
     for(var i = 0; i < 4; i++) {
     let headline = data[i].headline;
@@ -207,14 +217,9 @@ function buildMarqueeButton (sym) {
 //display all history button when first load up
 function initHistoryButton () {
   var localStorageData = JSON.parse(localStorage.getItem("stockSymbol"));
-  console.log('localStorageData',!localStorageData)
-  if(!!localStorageData) {
-    localStorageData.forEach(symbol => {
-      buildMarqueeButton(symbol)
-    })
-  }
+  localStorageData.forEach(symbol => {
+    buildMarqueeButton(symbol)
+  })
+
 }
 initHistoryButton()
-
-
-

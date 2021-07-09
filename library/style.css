@@ -114,7 +114,8 @@
     width: 50%;
 }
 
-.right-box {
+.right-box 
+{
     padding: 30px;
     width: 50%;
 } */
@@ -128,3 +129,14 @@
 padding: 10px;
 font-weight: bold;
 }
+
+.current-price,
+.open,
+.high,
+.previous-close,
+.low 
+{
+padding: 10px;
+font-weight: bold;
+}
+
