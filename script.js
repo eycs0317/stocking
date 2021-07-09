@@ -33,7 +33,7 @@ $('.searchBtn').click(function() {
   let userInput = $('.searchCode').val()
   $('.searchCode').val('')
 
-  chart(userInput);
+  // chart(userInput);
   fetchStockPrice(userInput);
   // buildMarqueeButton(userInput)
 })
@@ -56,6 +56,7 @@ function fetchStockPrice (symbol) {
       return;
       // need to show user invalid input
     } else {
+      chart(userInput);
       var stockArray = JSON.parse(localStorage.getItem("stockSymbol"));
       if (stockArray === null) {
         stockArray = [];
