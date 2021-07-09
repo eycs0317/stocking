@@ -33,7 +33,7 @@ $('.searchBtn').click(function() {
   let userInput = $('.searchCode').val()
   $('.searchCode').val('')
 
-  chart(userInput);
+  // chart(userInput);
   fetchStockPrice(userInput);
   // buildMarqueeButton(userInput)
 })
@@ -53,9 +53,16 @@ function fetchStockPrice (symbol) {
   .then(data => {
     if(data.c === 0 && data.h === 0) {
       console.log('invalid input')
+      var errorEl = document.getElementsByClassName('invalid-msg')[0]
+      errorEl.innerText = `ERROR: Invalid Stock Code!`
+      setTimeout(function(){ errorEl.innerText = ''; }, 5000);
       return;
       // need to show user invalid input
     } else {
+      if(window.myChart instanceof Chart){
+        window.myChart.destroy();
+      }
+      chart(symbol);
       var stockArray = JSON.parse(localStorage.getItem("stockSymbol"));
       if (stockArray === null) {
         stockArray = [];
@@ -102,7 +109,7 @@ function fetchNews() {
     return res.json()
   })
   .then(data => {
-    console.log(data)
+    // console.log(data)
     // News section
     for(var i = 0; i < 4; i++) {
     let headline = data[i].headline;
@@ -132,6 +139,13 @@ function fetchNews() {
 }
 fetchNews()
 
+//using enter button for search
+$(document).ready(function(){
+  $('.searchCode').keypress(function(e){
+    if(e.keyCode==13)
+    $('.searchBtn').click();
+  });
+});
 
 //chart function. input - symbol
 //function will call the API and get all the history data.
@@ -198,8 +212,8 @@ function buildMarqueeButton (sym) {
 
   historyBtnEl.attr('id', sym)
   historyBtnEl.click(function() {
-    console.log('click')
-    console.log($(this).attr('id'))
+    // console.log('click')
+    // console.log($(this).attr('id'))
     if(window.myChart instanceof Chart){
       window.myChart.destroy();
     }
@@ -215,9 +229,10 @@ function buildMarqueeButton (sym) {
 //display all history button when first load up
 function initHistoryButton () {
   var localStorageData = JSON.parse(localStorage.getItem("stockSymbol"));
-  localStorageData.forEach(symbol => {
-    buildMarqueeButton(symbol)
-  })
-
+  if(localStorageData !== null) {
+    localStorageData.forEach(symbol => {
+      buildMarqueeButton(symbol)
+    })
+  }
 }
 initHistoryButton()
