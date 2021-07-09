@@ -110,11 +110,17 @@ function fetchNews() {
     let url = data[i].url;
     let summary = data[i].summary
 
+
     var $headlineEl = $("<p>").addClass("title headline is-size-4").text(headline);
     var $summaryEl = $("<p>").addClass("summary is-size-6").text(summary);
     var $articleEl = $("<article>").addClass("tile is-child box");
-    var $cardEl = $("<div>").addClass("tile is-parent");
-
+    var $cardEl = $("<div>").addClass("tile is-parent cardItem").attr("url", url);
+    $cardEl.click(function (){
+      // console.log("click");
+      // console.log($(this));
+    $(this).attr("url");
+    console.log($(this));
+    })
 
     $articleEl.append($headlineEl, $summaryEl);
     $cardEl.append($articleEl);
