@@ -131,6 +131,13 @@ function fetchNews() {
 }
 fetchNews()
 
+//using enter button for search
+$(document).ready(function(){
+  $('.searchCode').keypress(function(e){
+    if(e.keyCode==13)
+    $('.searchBtn').click();
+  });
+});
 
 //chart function. input - symbol
 //function will call the API and get all the history data.
