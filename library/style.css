@@ -44,21 +44,18 @@
 .deleteBtn {
     background-color: #000000;
     border: none;
-    color: rgb(113, 112, 112);
+    color: rgb(82, 82, 82);
     padding: 0px 0px 10px 10px;
 }
 
 .searchBtn:hover {
     background-color: #ff00cc;
     font-style: oblique;
-    padding-right: 50px;
     color: white;
 }
 
 .deleteBtn:hover {
-    background-color: #ff00cc;
     font-style: oblique;
-    padding-right: 50px;
     color: white;
 }
 
