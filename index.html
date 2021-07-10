@@ -16,38 +16,41 @@
   <!-- start trial -->
 
   <nav class="navbar is-fixed-top has-background-black" role="navigation" aria-label="main navigation">
-      <a class="navbar-item">
+      <div class="navbar-item">
       <img src="assets/stockinglogo.png" width="112" height="28" alt="STOCKING">
-      </a>
-    <div class="navbar-brand">
-      <a class="navbar-item">
-        Home
+      
+   
+      <div class="navbar-brand pt-3">
+        <p class="navitems px-3 py-2"></p><a href="#news">News</a>
+        <p class="navitems px-3 py-2"></p><a href="#stockNav">Stock Search</a>
       </a>
 
-      <!-- navbar items, navbar burger... -->
     </div>
   </nav>
 
+      <!-- navbar items, navbar burger... -->
+  
 
 
 
 
 
+            
   <!-- end trial -->
   <div class="newscontainer has-background-black">
     <div class="notification is-primary has-background-black">
       <div class="columns has-background-black">
         <div class="column has-background-black ">
-          <img src="assets/heroblk.jpg" class="heroimg">
+          <img src="assets/heroblk.jpg" class="heroimg" id="stockinghero">
             <!-- Article section -->
-            <div class="tile is-ancestor article-section"></div>
+            <div class="tile is-ancestor article-section" id="news"></div>
             <!-- Stock search symbol section -->
             <img src="assets/ssymbol.png" width="400px" class="imgSearch">
 
             <form class="searchArea pb-40">
               <input class="searchCode px-3" placeholder="Stock Symbol"> </input><br>
                 <!-- search button section -->
-              <button class="searchBtn px-5 py-2">search</button>
+              <button class="searchBtn px-5 py-2" id="stockNav">search</button>
               <button class="deleteBtn px-3 py-1">clear</button>
               <p class="invalid-msg px-3 py-2">  </p>
             </form>
