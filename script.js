@@ -203,9 +203,6 @@ function buildMarqueeButton (sym) {
     if(window.myChart instanceof Chart){
       window.myChart.destroy();
     }
-    // let userInput = $('.searchCode').val()
-    // $('.searchCode').val('')
-    // console.log('userInput', userInput)
     chart(sym);
     fetchStockPrice(sym);
   })
