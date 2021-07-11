@@ -1,4 +1,4 @@
-// When seatch btn click
+// When search btn click
 $('.searchBtn').click(function(e) {
   e.preventDefault();
   let userInput = $('.searchCode').val()
@@ -7,14 +7,9 @@ $('.searchBtn').click(function(e) {
   fetchStockPrice(userInput);
 })
 
-//using enter button for search
-// $('.searchCode').keypress(function(e){
-//   if(e.keyCode==13)
-//   $('.searchBtn').click();
-// });
-
 const apiKey = 'c3ibusiad3ib8lb82nbg'
 
+// Function to search the current pricing
 function fetchStockPrice (symbol) {
   symbol = symbol.toUpperCase();
   var stockPriceApi = `https://finnhub.io/api/v1/quote?symbol=${symbol}&token=${apiKey}`
@@ -38,7 +33,6 @@ function fetchStockPrice (symbol) {
           localStorage.setItem('stockSymbol', JSON.stringify(stockArray))
           buildMarqueeButton(symbol)
       } else {
-        // buildMarqueeButton(symbol)
       }
 
       let currentPrice = accounting.formatMoney(data.c)
@@ -51,8 +45,7 @@ function fetchStockPrice (symbol) {
     })
 }
 
-//symbol example to test - aapl, fb , googl, amzn
-// fetchStockPrice('googl')
+// Display the prices options to the DOM
 function displayCurrentStockInfo(symbol, currentPrice, openPrice, lowPrice, highPrice, prevPrice){
  document.getElementsByClassName('stock-heading')[0].innerText = `${symbol}`;
  document.getElementsByClassName('current-price')[0].innerText = `Current price: ${currentPrice}`;
@@ -62,7 +55,7 @@ function displayCurrentStockInfo(symbol, currentPrice, openPrice, lowPrice, high
  document.getElementsByClassName('previous-close')[0].innerHTML = `Previous price: ${prevPrice}`;
 }
 
- //fetch news
+ // Fetch news
 function fetchNews() {
   var bussinessNewsApi = `https://finnhub.io/api/v1/news?category=general&token=${apiKey}`
   fetch(bussinessNewsApi)
@@ -70,7 +63,6 @@ function fetchNews() {
     return res.json()
   })
   .then(data => {
-    // News section
     for(var i = 0; i < 4; i++) {
     let headline = data[i].headline;
     let imageUrl = data[i].image;
@@ -95,12 +87,12 @@ function fetchNews() {
 }
 fetchNews()
 
-//chart function. input - symbol
-//function will call the API and get all the history data.
+// Chart function: input - symbol
+// Function will call the API and get all the history data.
 function chart(symbol) {
   var currentUnix =Math.round(new Date().getTime()/1000);
   var dateInUnix10DayAgo = currentUnix - (86400 * 20)
-
+  
   var stockCandlesApi = `https://finnhub.io/api/v1/stock/candle?symbol=${symbol}&resolution=D&from=${dateInUnix10DayAgo}&to=${currentUnix}&token=${apiKey}`
   fetch(stockCandlesApi)
   .then(res => {
@@ -112,14 +104,13 @@ function chart(symbol) {
         window.myChart.destroy();
       }
       let timeSlot = data.t
-      //convert unix time array to real time
       let realDate = timeSlot.map(time => {
         return new Date(time * 1000).toLocaleDateString("en-US")
       })
       buildChart(symbol,data.o, realDate)
     } else {
       let $invalidMsg = $('.invalid-msg')
-        $invalidMsg.text('bad input')
+        $invalidMsg.text('Invalid Stock Symbol')
         setTimeout(() => {
           $invalidMsg.text('')
         },700)
@@ -127,9 +118,7 @@ function chart(symbol) {
   })
 }
 
-//buildChart function - INPUT --> 1. symbol 2. array of pricing, 3. array of date
 function buildChart(symbol,priceArray, dateArray) {
-  // need to grab the current price nd push it to priceArray
   let labels = dateArray;
 
   let data = {
@@ -154,7 +143,7 @@ function buildChart(symbol,priceArray, dateArray) {
   );
 }
 
-//build marquee button
+// Build marquee button
 function buildMarqueeButton (sym) {
   sym = sym.toUpperCase()
   let historyBtnEl = $('<button>').addClass('stockToWatch history-btn mx-1').text(sym).attr('id', sym)
@@ -167,8 +156,7 @@ function buildMarqueeButton (sym) {
   $('marquee').append(historyBtnEl)
 }
 
-
-//display all history button when first load up
+// Display all history button when first load up
 function initHistoryButton () {
   var localStorageData = JSON.parse(localStorage.getItem("stockSymbol"));
   if(localStorageData !== null) {
@@ -179,7 +167,7 @@ function initHistoryButton () {
 }
 initHistoryButton()
 
-// deleteBtn
+// DeleteBtn
 $('.deleteBtn').click(function(e) {
   e.preventDefault()
   let emptyArr = []
@@ -189,27 +177,9 @@ $('.deleteBtn').click(function(e) {
 
 
 
-// I clean up some code - need to update code picture in the presentation
-
-// i change searchArea div to form. SO that the Enter key work HTML 25, 30. Added e.preventDefault() on JS 3 to prevent refresh, so 10-14 are no longer needed.
-
-// using history data api inside chart function to check input
-
-// for padding and margin - try to use https://bulma.io/documentation/helpers/spacing-helpers/ for flex box https://bulma.io/documentation/helpers/flexbox-helpers/
-
-// added a button after the search button to clear the localstorage HTML line29 JS 183-188. I don't know if that a good idea or not. delete if you like
-
-// We have a  <p class=“invalid-msg px-3 py-2”>error message show here!</p> on HTML line 30 for the invalid input. please style if u can.
-
-//Found 2x .searchBtn in css ??
-
-
-
 ///////////////////////////////////////////////////////////////
-// example for accounting.js and fetchCryto function that we didn't use
-// accounting.js example
-// var a = accounting.formatMoney(5318008);
-// console.log(a) //$5,318,008.00
+// For future use //
+// FetchCryto function that we didn't use
 
 //function to fetch cryto - did not use
 // function fetchCryto (symbol) {
