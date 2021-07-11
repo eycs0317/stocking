@@ -11,21 +11,20 @@
 }
 
 .heroimg {
-    /* padding-bottom: 10px; */
     background-color: transparent;
 }
 
-.navitems:visited{
+.navitems:visited {
     font-weight: bold;
     color: #ff00cc;
 }
 
-.navitems:hover{
+.navitems:hover {
     font-weight: bold;
     color: #ff00cc;
 }
 
-.searchArea{
+.searchArea {
     display: flex;
     justify-content: center;
     align-content: center;
@@ -81,7 +80,6 @@
     background-color: #330099;
     border-width: thick;
     color: white;
-
 }
 
 .stockToWatch {
@@ -97,12 +95,10 @@
     font-size: 40px;
 }
 
-
 .history-btn:hover {
     color:aliceblue;
     border-width: thick;
 }
-
 
 .stockImg {
     display: flex;
@@ -119,7 +115,6 @@
     height: 380px;
     border-radius: 10px;
 }
-
 
 .current-price,
 .open,
