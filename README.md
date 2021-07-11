@@ -22,3 +22,4 @@ This multi-functional website provides users with quick and up-to-date stock inf
 
 ## Page Walkthrough
 
+![Gif]("./assets/stockinggif.gif")
