@@ -20,3 +20,5 @@ This multi-functional website provides users with quick and up-to-date stock inf
 - Stock search bar to display stock chart based on user preference
 - stock information sheet
 
+## Page Walkthrough
+
