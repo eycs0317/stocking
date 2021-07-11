@@ -1,1 +1,1 @@
-# stocking
+# Stocking: The Daily Blockchain and News Hub
