@@ -24,9 +24,12 @@ This multi-functional website provides users with quick and up-to-date stock inf
 
 ![Gif](./assets/stockinggif.gif)
 
+## Teechnologies Used
+
+HTML, CSS, Javascript, chart.js, accounting.js, bulma, photoshop
+
 ## Authors
 
 - Eddie Yeung (https://github.com/eycs0317)
 - Maria Pusparani (https://github.com/mxpux)
 - Pranav Byakod (https://github.com/pbyakod)
-
