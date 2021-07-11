@@ -10,7 +10,7 @@ This multi-functional website provides users with quick and up-to-date stock inf
 
 ## Screenshot of Website
 
-![Screenshot Image]("./assets/screenshot.png")
+![Screenshot Image](./assets/screenshot.png)
 
 ## Website Functionalities
 
@@ -22,7 +22,7 @@ This multi-functional website provides users with quick and up-to-date stock inf
 
 ## Page Walkthrough
 
-![Gif]("./assets/stockinggif.gif")
+![Gif](./assets/stockinggif.gif)
 
 ## Authors
 
