@@ -7,48 +7,57 @@
 }
 
 .is-child {
-    margin-bottom: 240px;
     color: #353535;
 }
 
 .heroimg {
-    padding-bottom: 40px;
     background-color: transparent;
 }
 
-.searchArea{
+.navitems:visited {
+    font-weight: bold;
+    color: #ff00cc;
+}
+
+.navitems:hover {
+    font-weight: bold;
+    color: #ff00cc;
+}
+
+.searchArea {
     display: flex;
     justify-content: center;
     align-content: center;
-    padding-bottom: 50px;
-    padding-top: 10px;
 }
 
 .searchBtn {
     background-color: #000000;
     border: none;
     color: white;
-    padding: 0px 0px 10px 10px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: medium;
     font-weight: bold;
-    margin: 4px 2px;
-    transition-duration: 0.4s;
+    transition-duration: 0.5s;
     cursor: pointer;
+    color: #ff00cc;
 }
 
-.searchBtn {
-    background-color: rgb(2, 2, 2);
-    color: #ff3399;
-    margin-left: 20px;
+.deleteBtn {
+    background-color: #000000;
+    border: none;
+    color: rgb(82, 82, 82);
 }
 
 .searchBtn:hover {
     background-color: #ff00cc;
     font-style: oblique;
-    padding-right: 50px;
+    color: white;
+}
+
+.deleteBtn:hover {
+    font-style: oblique;
     color: white;
 }
 
@@ -65,14 +74,12 @@
     justify-content: center;
     margin-right: auto;
     margin-left: auto;
-    padding-top: 50px;
 }
 
 .box:hover {
     background-color: #330099;
     border-width: thick;
     color: white;
-
 }
 
 .stockToWatch {
@@ -108,7 +115,6 @@
     height: 380px;
     border-radius: 10px;
 }
-
 
 .current-price,
 .open,
