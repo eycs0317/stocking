@@ -2,7 +2,7 @@
 
 ## Deployed Link
 
-https://pbyakod.github.io/stocking/
+https://eycs0317.github.io/stocking/
 
 ## Short Description
 
